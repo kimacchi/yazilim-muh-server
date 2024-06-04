@@ -1,4 +1,3 @@
-import pandas as pd
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from sklearn.model_selection import train_test_split
@@ -38,11 +37,13 @@ y=dataset["Rent"]
 categorical_columns = x.select_dtypes(include=['object']).columns
 numerical_columns = x.select_dtypes(exclude=['object']).columns
 
+
+
 # Preprocessor: handle categorical and numerical data
 preprocessor = ColumnTransformer(
     transformers=[
         ('num', StandardScaler(), numerical_columns),
-        ('cat', OneHotEncoder(handle_unknown='ignore'), categorical_columns)
+        ('cat', OneHotEncoder(handle_unknown="ignore"), categorical_columns)
     ])
 
 # Create the pipeline
